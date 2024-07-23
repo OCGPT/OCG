@@ -1,48 +1,46 @@
-let currentIndex = 0;
+let page = 1;
+const limit = 10; // Number of items per page
+const contentContainer = document.getElementById('content-container');
+const loadingIndicator = document.getElementById('loading-indicator');
 
-function showNextImage() {
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = document.querySelectorAll('.carousel img');
-    currentIndex = (currentIndex + 1) % images.length;
-    const offset = -currentIndex * 100;
-    carouselImages.style.transform = `translateX(${offset}%)`;
+async function fetchItems(page, limit) {
+    // Replace this URL with your API or data source
+    const response = await fetch(`https://api.example.com/items?page=${page}&limit=${limit}`);
+    const data = await response.json();
+    return data.items; // Adjust based on your API response structure
 }
 
-setInterval(showNextImage, 3000); // Change image every 3 seconds
+function createItemElement(item) {
+    const div = document.createElement('div');
+    div.className = 'item';
+    div.innerHTML = `<h3>${item.title}</h3><p>${item.description}</p>`;
+    return div;
+}
 
-function searchCollection() {
-    const input = document.getElementById('searchInput').value;
-    const results = document.getElementById('searchResults');
+async function loadMoreItems() {
+    loadingIndicator.style.display = 'block';
+    const items = await fetchItems(page, limit);
+    items.forEach(item => {
+        const itemElement = createItemElement(item);
+        contentContainer.appendChild(itemElement);
+    });
+    loadingIndicator.style.display = 'none';
+    page++;
+}
 
-    // Example static data, this should be replaced with dynamic data in a real application
-    const collections = {
-        "Base Set": "This is the base set collection...",
-        "Legendary Collection": "This is the legendary collection...",
-        // Add more collections as needed
-    };
+function handleScroll() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
 
-    if (collections[input]) {
-        results.innerHTML = collections[input];
-    } else {
-        results.innerHTML = "Collection not found.";
+    if (scrollTop + windowHeight >= documentHeight - 100) {
+        loadMoreItems();
     }
 }
 
-function checkGrading() {
-    const code = document.getElementById('gradingCode').value;
-    const results = document.getElementById('gradingResults');
+window.addEventListener('scroll', handleScroll);
 
-    // Example static data, this should be replaced with dynamic data in a real application
-    const gradingDatabase = {
-        "12345": "Card: Pikachu, Grade: 9.5, Collection: Base Set",
-        "67890": "Card: Charizard, Grade: 10, Collection: Legendary Collection",
-        // Add more grading data as needed
-    };
+// Initial load
+loadMoreItems();
 
-    if (gradingDatabase[code]) {
-        results.innerHTML = gradingDatabase[code];
-    } else {
-        results.innerHTML = "Grading code not found.";
-    }
-}
 
