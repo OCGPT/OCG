@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+}
+
+section {
+    margin: 2em 0;
+}
+
+#carousel {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel img {
+    width: 150px;
+    margin: 0 1em;
+}
+
+input {
+    padding: 0.5em;
+    margin: 0.5em 0;
+}
+
+button {
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

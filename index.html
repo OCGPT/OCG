@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCG Marketplace and Grading</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to TCG Marketplace and Grading</h1>
+    </header>
+
+    <section id="carousel">
+        <h2>Explore Trading Card Games</h2>
+        <div class="carousel">
+            <img src="pokemon.jpg" alt="Pokémon">
+            <img src="magic.jpg" alt="Magic: The Gathering">
+            <!-- Add more images as needed -->
+        </div>
+    </section>
+
+    <section id="search">
+        <h2>Search for Card Collections</h2>
+        <input type="text" id="searchInput" placeholder="Enter card collection name...">
+        <button onclick="searchCollection()">Search</button>
+        <div id="searchResults"></div>
+    </section>
+
+    <section id="grading">
+        <h2>Check Card Grading</h2>
+        <input type="text" id="gradingCode" placeholder="Enter grading code...">
+        <button onclick="checkGrading()">Check</button>
+        <div id="gradingResults"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 TCG Marketplace and Grading</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
