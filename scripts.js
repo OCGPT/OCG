@@ -6,12 +6,18 @@ function searchCollection() {
     const collections = {
         "Base Set": "This is the base set collection...",
         "Legendary Collection": "This is the legendary collection...",
+        "Base Set 2": "This is the base set 2 collection...",
+        "Jungle": "This is the Jungle collection...",
         // Add more collections as needed
     };
 
     if (collections[input]) {
-        results.innerHTML = collections[input];
-    } else {
+    "12345": "Card: Pikachu, Grade: 9.5, Collection: Base Set",
+    "67890": "Card: Charizard, Grade: 10, Collection: Legendary Collection",
+    "54321": "Card: Bulbasaur, Grade: 8.5, Collection: Jungle",
+    "09876": "Card: Mewtwo, Grade: 9.0, Collection: Base Set 2",
+    } 
+    else {
         results.innerHTML = "Collection not found.";
     }
 }
