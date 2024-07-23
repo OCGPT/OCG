@@ -1,3 +1,15 @@
+let currentIndex = 0;
+
+function showNextImage() {
+    const carouselImages = document.querySelector('.carousel-images');
+    const images = document.querySelectorAll('.carousel img');
+    currentIndex = (currentIndex + 1) % images.length;
+    const offset = -currentIndex * 100;
+    carouselImages.style.transform = `translateX(${offset}%)`;
+}
+
+setInterval(showNextImage, 3000); // Change image every 3 seconds
+
 function searchCollection() {
     const input = document.getElementById('searchInput').value;
     const results = document.getElementById('searchResults');
@@ -6,18 +18,12 @@ function searchCollection() {
     const collections = {
         "Base Set": "This is the base set collection...",
         "Legendary Collection": "This is the legendary collection...",
-        "Base Set 2": "This is the base set 2 collection...",
-        "Jungle": "This is the Jungle collection...",
         // Add more collections as needed
     };
 
     if (collections[input]) {
-    "12345": "Card: Pikachu, Grade: 9.5, Collection: Base Set",
-    "67890": "Card: Charizard, Grade: 10, Collection: Legendary Collection",
-    "54321": "Card: Bulbasaur, Grade: 8.5, Collection: Jungle",
-    "09876": "Card: Mewtwo, Grade: 9.0, Collection: Base Set 2",
-    } 
-    else {
+        results.innerHTML = collections[input];
+    } else {
         results.innerHTML = "Collection not found.";
     }
 }
@@ -39,3 +45,4 @@ function checkGrading() {
         results.innerHTML = "Grading code not found.";
     }
 }
+
