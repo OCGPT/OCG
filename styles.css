@@ -12,23 +12,12 @@ header {
 }
 
 section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    margin: 0;
+    margin: 2em 0;
 }
 
 #carousel {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-}
-
-#carousel h2 {
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full viewport height */
@@ -36,13 +25,19 @@ section {
 }
 
 .carousel {
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-images {
     display: flex;
-    justify-content: center;
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel img {
-    width: 150px;
-    margin: 0 1em;
+    width: 100%;
+    max-width: 100%;
 }
 
 input {
@@ -63,3 +58,4 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
